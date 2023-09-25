@@ -1,13 +1,17 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Anton&family=Mooli&family=Prompt:wght@700&family=Quicksand&family=Roboto&display=swap');
-
+ .z2{
+  box-shadow: 0 0  2px rgb(201, 177, 177);
+ }
 .zxz {
   margin-left: 2%;
   font-size: 20px;
+  color: rgb(1,41,112);
 }
 
 .d1 {
   margin-left: 5%;
+  color: rgb(1,41,112);
 }
 
 .sizing1 {
@@ -27,6 +31,8 @@
 
 .d8 {
   font-size: 20px;
+ color:  rgb(1,41,112); 
+
 }
 
 .d5 {
@@ -58,6 +64,7 @@
 
 .t5 {
   font-weight: 500;
+ color:  rgb(56,87,143);
 }
 
 .t4 {
@@ -70,6 +77,10 @@
   width: 35%;
   height: 35px;
 }
+.a26{
+  color: rgb(1,41,112);
+  opacity: 0.7;
+}
 
 .a2 {
   font-size: 24px;
@@ -80,6 +91,7 @@
   font-family: 'Quicksand', sans-serif;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
+  color: rgb(1,41,112);
 }
 
 .a3 {
@@ -208,9 +220,10 @@
 
 .a12 {
   font-size: 13px;
-  margin-left: 4%;
+  margin-left: 10%;
   color: rgb(164, 166, 170);
   font-weight: 500;
+  margin-top: 3%;
 }
 
 .a13 {
@@ -325,7 +338,7 @@
 }
 
 .oppo {
-  color: rgb(13, 110, 253);
+  color: rgb(9,60,159);
   font-size: 17px;
   font-weight: 600;
   margin-left: 2%;
@@ -434,4 +447,50 @@ table {
   width: 260%;
   background-color: rgb(211, 200, 200);
   margin-left: -5px;
+}
+.trtt{
+  color: rgb(65,84,241);
+}
+.logo1{
+  text-decoration: none;
+
+}
+.logo2{
+  color: blueviolet;
+  background-color: none !important;
+}
+.l33{
+  width: 58%;
+  height: 470px;
+  position: absolute;
+  top: 0;
+  margin-top: 7%;
+  margin-left: 21%;
+  border-radius: 10px;
+
+}
+.l4 {
+  text-align: start;
+}
+
+.l8 {
+  font-size: 32px;
+}
+
+.log11 {
+  font-size: 18px;
+  color: black;
+  font-weight: 600;
+}
+.log22 {
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+}
+
+.log33 {
+  font-size: 13px;
+}
+.l5 {
+  background-color: rgb(33, 37, 41);
 }

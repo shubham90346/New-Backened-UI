@@ -7,7 +7,7 @@ function Comparison(props) {
         <div className=''>
             <div className='container'>
                 <p className='text-start  a2 mt-1 '>Comparison Report</p>
-                <p className='a3 text-start  '>Home / <span className='text-secondary' >Comparison Report</span></p >
+                <p className='a3 text-start  '>Home / <span className='a26' >Comparison Report</span></p >
 
                 <div className='row x1 mt-3 c2' >
                     <div className='col-lg-5'>

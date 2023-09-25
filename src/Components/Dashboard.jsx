@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsCurrencyDollar } from 'react-icons/bs'
 import { IoMdContacts } from 'react-icons/io'
@@ -7,8 +7,42 @@ import Charts from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import { Pie } from "react-chartjs-2";
+import { getStaticContextFromError } from '@remix-run/router';
 
-function Dashboard(props) {
+function Dashboard() {
+    const [Getdata, setGetdata] = useState({});
+    const userToken = sessionStorage.getItem('user');
+
+
+
+    const option = {
+        method: "GET",
+        headers: {
+            "Authorization":userToken,
+        },
+        body: JSON.stringify()
+  
+    }
+    const Dashboardapi= async ()=>{
+        const response = await fetch(`https://qb.flitsync.com/api/dashboard.php`,option);
+      
+        if (!response.ok) {
+            console.log(` Error! Status: ${response.status}`);
+          }
+          const apidatas = await response.json();
+          setGetdata(apidatas)
+     }
+     useEffect(()=>{
+        
+
+         Dashboardapi()
+     },[])
+
+
+   
+
+
+
     const [states, setstates] = useState({
         options: {
             chart: {
@@ -87,7 +121,7 @@ function Dashboard(props) {
         ],
     };
 
-    const labelses = ["Red", "Blue", "Yellow"];
+    const labelses = ["blue", "yellow", "pink"];
 
     const dataas = {
         labels: labelses,
@@ -112,12 +146,12 @@ function Dashboard(props) {
             },
             {
                 label: 'Dataset 2',
-                data: [20, 30, 40, 65, 23, 45, 12],
+                data: [20, 30, 40, 65, -23, 45, 12],
                 backgroundColor: 'rgb(54,162,235)',
             },
             {
                 label: 'Dataset 3',
-                data: [20, 30, 40, 34, 34, 9, 54],
+                data: [-32, 30, 40, 34, 34, 9, 54],
                 backgroundColor: 'rgb(255,205,86)',
             },
 
@@ -140,7 +174,7 @@ function Dashboard(props) {
         <div>
             <div className='container'>
                 <p className='text-start  a2 mt-1 '>Dashboard</p>
-                <p className='a3 text-start  '>Home / <span className='text-secondary' >Dashboard</span></p >
+                <p className='a3 text-start  '>Home / <span className=' a26' >Dashboard</span></p >
                 <div className='row'>
                     <div className='col-lg-4 a41'>
                         <p className='d-flex a5 mt-2'>Sales|<span className='text-secondary a6'> Today</span><span className='a77 text-secondary'>...</span></p>
@@ -149,7 +183,7 @@ function Dashboard(props) {
                                 <AiOutlineShoppingCart className='a9 ' />
                             </div>
                             <div className=''>
-                                <p className='a10'>$3569 <span className='a11'>12%</span><span className='a12'>increase</span></p>
+                                <p className='a10'>${Getdata?.total_sale?.total}<p className='a11 d-flex'>12%  <span className='a12'>increase</span></p></p>
                             </div>
                         </div>
                     </div>
@@ -160,7 +194,7 @@ function Dashboard(props) {
                                 <BsCurrencyDollar className='a13 ' />
                             </div>
                             <div className=''>
-                                <p className='a10   '>12 <span className='a111'>8%</span><span className='a12'>increase</span></p>
+                                <p className='a10  '>{Getdata?.total_items?.total}<p className='a111 d-flex'>8% <span className='a12'>increase</span></p></p>
                             </div>
                         </div>
                     </div>
@@ -171,7 +205,7 @@ function Dashboard(props) {
                                 <IoMdContacts className='a14 ' />
                             </div>
                             <div className=''>
-                                <p className='a10  '>4 <span className='a15'>12%</span><span className='a12'>Decrease</span></p>
+                                <p className='a10  '>{Getdata?.total_cogs?.total}<p className='a15 d-flex'>12% <span className='a12'>Decrease</span></p></p>
                             </div>
                         </div>
                     </div>
@@ -216,26 +250,26 @@ function Dashboard(props) {
                             </thead>
                             <tr>
                                 <td className='text-primary'>#2345</td>
-                                <td>Defaultson</td>
+                                <td>Defalsons</td>
                                 <td className='text-primary'>def@som</td>
                                 <td>$76</td>
-                                <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Approved</td>
+                                <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center '>Approved</td>
                             </tr>
-                            <tr>
+                            <tr className="">
                                 <td className='text-primary'>#4567</td>
-                                <td>Doe</td>
+                                <td>Doeq</td>
                                 <td className='text-primary'>john@ex</td>
                                 <td>$98</td>
                                 <td style={{ backgroundColor: 'rgb(255,193,7)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Pending</td>
                             </tr>
                             <tr>
                                 <td className='text-primary'>#6547</td>
-                                <td>Moe</td>
+                                <td>Moew</td>
                                 <td className='text-primary'>mary@</td>
                                 <td>$54</td>
                                 <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Approved</td>
                             </tr>
-                            <tr class="info">
+                            <tr>
                                 <td className='text-primary'>#1298</td>
                                 <td>Dooley</td>
                                 <td className='text-primary'>july@</td>
@@ -256,7 +290,7 @@ function Dashboard(props) {
                                 <td>$23</td>
                                 <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Approved</td>
                             </tr>
-                            <tr class="info">
+                            <tr >
                                 <td className='text-primary'>#1298</td>
                                 <td>Dooley</td>
                                 <td className='text-primary'>july@</td>

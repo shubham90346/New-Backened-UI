@@ -5,7 +5,7 @@ function ItemReport(props) {
         <div>
             <div className='container'>
                 <p className='text-start  a2 mt-1 '>Items Report</p>
-                <p className='a3 text-start  '>Home / <span className='text-secondary' >Items Report</span></p >
+                <p className='a3 text-start  '>Home / <span className='a26' >Items Report</span></p >
 
                 <div className='mkl'>
                     <p className='oppo'> Filters</p>
@@ -66,7 +66,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$908</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154R-D456746</td>
@@ -76,7 +76,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$546</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -86,7 +86,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$1294</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -96,7 +96,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$129</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -106,7 +106,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$173</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -116,7 +116,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$243</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -126,7 +126,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$193</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -136,7 +136,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$4293</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
@@ -146,7 +146,7 @@ function ItemReport(props) {
                                 <td>...</td>
                                 <td>---</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$2393</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>

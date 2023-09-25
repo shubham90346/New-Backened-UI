@@ -5,7 +5,7 @@ function CogsReport(props) {
         <div>
             <div className='container'>
                 <p className='text-start  a2 mt-1 '>Cogs Report</p>
-                <p className='a3 text-start  '>Home / <span className='text-secondary' >Cogs Report</span></p >
+                <p className='a3 text-start  '>Home / <span className='a26' >Cogs Report</span></p >
                 <div className='mkl'>
                     <p className='oppo'> Filters</p>
                     <div className='d-flex mt-3'>
@@ -55,66 +55,63 @@ function CogsReport(props) {
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>$223</td>
-                                <td>20</td>
+                                <td>Flours</td>
+                                <td>$803</td>
+                                <td>26</td>
                                 <td>---</td>
                                 <td>$1293</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>$223</td>
-                                <td>20</td>
+                                <td>Wood Door</td>
+                                <td>$403</td>
+                                <td>10</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$2134</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>$223</td>
-                                <td>20</td>
+                                <td>Dumber</td>
+                                <td>$523</td>
+                                <td>18</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$4356</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>$223</td>
-                                <td>20</td>
+                                <td>Cabinets</td>
+                                <td>$123</td>
+                                <td>15</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$7896</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>$223</td>
-                                <td>20</td>
+                                <td>Ceiling Lighting</td>
+                                <td>$293</td>
+                                <td>23</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$786</td>
                             </tr>
                             <tr className='s12 text-secondary'>
                                 <td >154-D456746</td>
-                                <td>Mark johny</td>
+                                <td>Wooden tables</td>
                                 <td>$223</td>
-                                <td>20</td>
+                                <td>30</td>
                                 <td>---</td>
-                                <td>$1293</td>
+                                <td>$129</td>
                             </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>$223</td>
-                                <td>20</td>
-                                <td>---</td>
-                                <td>$1293</td>
-                            </tr>
+                          
                         </table>
                     </div>
                 </div>
                 <br/> <br/> 
             </div>
-            <div className='hr_line'></div>
+
+            <div className='hr_line'>
+
+            </div>
+
             <p className='p11 text-center mt-2'> Copyright <span className='p12'>Demeter Fragrances.</span> All Rights Reserved</p>
         </div>
     );
