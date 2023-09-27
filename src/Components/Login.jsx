@@ -40,19 +40,13 @@ function Login(props) {
         if (response.ok) {
             toast.success("logged in successfully")
             navigate('/home');
-         sessionStorage.setItem("user", user.token);  
-              
-        } 
-        
+            sessionStorage.setItem("user", user.token);
+        }
+
         else {
             setMessage("Something went wrong, please try again.")
         }
     }
-
-   
-
-
-  
 
     return (
         <div className='jl2'>
@@ -76,23 +70,18 @@ function Login(props) {
                                 <label className='lg7'>Remember Me</label>
                             </div>
                             <div className='form-group mt-2'>
-                                <button type="submit" className="btn-btn form-control text-white lg6  p-2" onClick={submitForm}>Login</button>
+                                <button type="button" className="btn-btn form-control text-white lg6  p-2" onClick={submitForm}>Login</button>
 
                             </div>
 
                             {/* <div className="message">{Message ? <p>{Message}</p> : null}</div> */}
                             <p className="card-text mt-2 text-center">
-                                <a href="#" className='  l6'>Forgot password?</a>
+                                <a href="#" className='l6'>Forgot password?</a>
                             </p>
                         </form>
-
-
-
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     );

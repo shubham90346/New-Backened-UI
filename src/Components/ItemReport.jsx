@@ -1,6 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Spinner from './Spinner';
+
 
 function ItemReport(props) {
+    const [isLoading, setIsLoading] = useState(false);
+    const [Items,setItems]= useState()
+    console.log(Items)
+
+
+    const userToken = sessionStorage.getItem('user');
+    const option = {
+        method: "GET",
+        headers: {
+            "Authorization": userToken,
+        },
+        body: JSON.stringify()
+    }
+
+
+
+    const ItemRepData = async () => {
+        setIsLoading(true);
+        const response = await fetch(`https://qb.flitsync.com/api/items.php`, option);
+        if (!response.ok) {
+            console.log(` Error! Status: ${response.status}`);
+        }
+        const ItemData = await response.json();
+        setItems(ItemData)
+        setIsLoading(false)
+    }
+
+    useEffect(()=>{
+        ItemRepData();
+    },[])
+    
+
+
     return (
         <div>
             <div className='container'>
@@ -11,36 +46,49 @@ function ItemReport(props) {
                     <p className='oppo'> Filters</p>
 
                     <div className='d-flex mt-3'>
-                        <select name="language" id="language" className='s8 text-secondary'>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected >Select Months
+                        <select className='s8 text-secondary'>
+                        <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="" >3</option>
+                            <option value="" >4</option>
+                            <option value="" >5</option>
+                            <option value="" >6</option>
+                            <option value="" >7</option>
+                            <option value="" >8</option>
+                            <option value="" >9</option>
+                            <option value="" >10</option>
+                            <option value="" >11</option>
+                            <option value="" >12</option>
+                            <option value="" selected >Select Months
                             </option>
                         </select>
                         <select name="language" id="language" className='s4 text-secondary'>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>Select Year</option>
+                            <option value="">2021</option>
+                            <option value="">2022</option>
+                            <option value="" >2023</option>
+                            <option value="" selected>Select Year</option>
                         </select>
-                        <select name="language" id="language" className='s4 text-secondary'>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>By Order No</option>
+                        <select  className='s4 text-secondary'>
+                            {
+                                Items?.allItems.map((iti)=>{
+                                    return (  <option>{iti.ListID}</option>
+                                    )
+                                })
+                            }
+                            <option value="" selected>By Order No</option>
                         </select>
-                        <select name="language" id="language" className='s4 text-secondary'>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>Select product</option>
+                        <select  className='s4 text-secondary '>
+                        {
+                                Items?.allItems.map((iti)=>{
+                                    return (  <option className=''>{iti.FullName}</option>
+                                    )
+                                })
+                            }
+                            <option value="" selected>Select product</option>
                         </select>
-                        <select name="language" id="language" className='s4 text-secondary'>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>Select Customer</option>
+                        <select  className='s4 text-secondary'>
+                            <option value="" >...</option>
+                            <option value="" selected>Select Customer</option>
                         </select>
                         <button type="button" className="btn btn- s7 text-white">Submit</button>
                         <button type="button" className="btn btn-  s6 text-white">Clear</button>
@@ -48,7 +96,9 @@ function ItemReport(props) {
 
                     <div className='container'>
                         <table className='mt-5 table'>
-                            <tr className='s11 '>
+                     
+                            <thead>
+                            <tr className='s64 '>
                                 <th >Order No</th>
                                 <th >Items Name</th>
                                 <th >Items Price</th>
@@ -58,106 +108,30 @@ function ItemReport(props) {
                                 <th >Items Tax</th>
                                 <th >Total price</th>
                             </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Mark </td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$908</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154R-D456746</td>
-                                <td>Marque</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$546</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Cabinets</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$1294</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Cabinets Pulls</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$129</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Door Frame</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$173</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Hardware</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$243</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>wood door</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$193</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td> johny</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$4293</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Down Ceiling</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$2393</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>wodden Table</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>...</td>
-                                <td>---</td>
-                                <td>---</td>
-                                <td>$1293</td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                            {isLoading ? <Spinner/> : ItemRepData }
+                            {
+                                Items?.allItems?.map((ind)=>{
+                                    return(
+                                     <>
+                                     <tr className='s121 text-secondary'>
+                                        <td className='fw-bold text-black'> {ind.ListID} </td>
+                                        <td className='text-secondary'>{ind.FullName}</td>
+                                        <td className='text-secondary'>...</td>
+                                        <td className='text-secondary'>...</td>
+                                        <td className='text-secondary'>...</td>
+                                        <td className='text-secondary'>...</td>
+                                        <td className='text-secondary'>...</td>
+                                        <td className='text-secondary'>${ind.SalesPrice}</td>
+                                     </tr>
+                                         </>
+                                    )
+                                })
+                              }
+                            </tbody>
+                          
+                            
                         </table>
                     </div>
                 </div>

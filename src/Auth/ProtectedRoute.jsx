@@ -4,12 +4,12 @@ import Dashboard from '../Components/Dashboard';
 
 function ProtectedRoute(props) {
     const [isLoggedIn, setisLoggedIn] = useState(false);
- 
+
     const navigate = useNavigate();
 
     const checkUserToken = () => {
         const userToken = sessionStorage.getItem('user');
-       
+
         if (!userToken || userToken === 'undefined') {
             setisLoggedIn(false);
             return navigate('/');
@@ -24,7 +24,7 @@ function ProtectedRoute(props) {
     return (
         <>
             {isLoggedIn ? props.children : null}
-       
+
         </>
     );
 }

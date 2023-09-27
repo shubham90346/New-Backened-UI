@@ -16,7 +16,7 @@ function Forgotpassword(props) {
         forgotpass(FormData);
     }
 
-    const forgotpass= async (FormData)=>{
+    const forgotpass = async (FormData) => {
         const option = {
             method: "POST",
             headers: {
@@ -25,15 +25,15 @@ function Forgotpassword(props) {
             body: JSON.stringify(FormData)
         }
 
-        const response = await fetch(`https://qb.flitsync.com/api/forgot_password.php?email=${FormData.email}`,option);
+        const response = await fetch(`https://qb.flitsync.com/api/forgot_password.php?email=${FormData.email}`, option);
         console.log(response)
-    } 
+    }
 
 
 
     return (
         <div>
-             <div className="card l33 ">
+            <div className="card l33 ">
                 <div className="row ">
                     <div className="col-lg-5">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" className="img-fluid rounded-start tyt" alt="..." />
@@ -49,7 +49,7 @@ function Forgotpassword(props) {
                                     <input type="email" className="form-control mt-2" onChange={handleChange} id="exampleInputEmail1" aria-describedby="emailHelp" />
 
                                 </div>
-                               
+
                                 <div className='form-group mt-3'>
                                     <button type="submit" className="btn-btn form-control l5 text-white p-2" onClick={submitForm}>Submit</button>
                                 </div>

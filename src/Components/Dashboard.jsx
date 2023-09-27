@@ -13,84 +13,118 @@ function Dashboard() {
     const [Getdata, setGetdata] = useState({});
     const userToken = sessionStorage.getItem('user');
 
-
-
     const option = {
         method: "GET",
         headers: {
-            "Authorization":userToken,
+            "Authorization": userToken,
         },
         body: JSON.stringify()
-  
     }
-    const Dashboardapi= async ()=>{
-        const response = await fetch(`https://qb.flitsync.com/api/dashboard.php`,option);
-      
+    const Dashboardapi = async () => {
+        const response = await fetch(`https://qb.flitsync.com/api/dashboard.php`, option);
+
         if (!response.ok) {
             console.log(` Error! Status: ${response.status}`);
-          }
-          const apidatas = await response.json();
-          setGetdata(apidatas)
-     }
-     useEffect(()=>{
+        }
+        const apidatas = await response.json();
+        setGetdata(apidatas)
+    }
+    useEffect(() => {
+        Dashboardapi()
+    }, [])
+
+
+    // const [states, setstates] = useState({
+    //     options: {
+    //         chart: {
+    //             type: "area",
+    //             stacked: false,
+    //             height: 350,
+    //             zoom: {
+    //                 enabled: false
+    //             },
+
+
+    //         },
+    //         dataLabels: {
+    //             enabled: false
+    //         },
+    //         markers: {
+    //             size: 0,
+    //         },
+    //         stroke: {
+    //             curve: 'smooth'
+    //         },
+    //         fill: {
+    //             type: 'gradient',
+    //             gradient: {
+    //                 opacityTo: 0.9,
+    //             }
+    //         },
+    //         legend: {
+    //             position: 'top',
+    //             horizontalAlign: 'left'
+    //         },
+    //     },
+    //     stroke: {
+    //         curve: 'straight'
+    //     },
+    //     series: [{
+    //         name: 'Sales',
+    //         data: [0, 26, 37, 58, 64, 74, 78, 87],
+    //         Color: "(rgb(65,84,241)",
+
+
+
+    //     }, {
+    //         name: 'Revenue',
+    //         data: [10, 22, 32, 44, 55, 67, 75, 76],
+    //         color: "rgb(46,202,106)"
+    //     }, {
+    //         name: 'customers',
+    //         data: [8, 14, 20, 30, 45, 50, 58, 64],
+    //         color: "rgb(255,119,29)"
+    //     }],
+    // });
+    const labelsess = ["January", "February", "March", "April", "May", "June", "july"];
+    const datas = {
+        labels: labelsess,
+        datasets: [
+            {
+                label: "Sales",
+                //  backgroundColor: "rgb(127,137,244)",
+                borderColor: "rgb(127,137,244)",
+                 backgroundColor: "rgb(222,225,247)",
+                borderWidth: 2,
+                data: [0, 10, 5, 10, 20, 20, 40],
+                fill: true,
+                
+                
+               
+            },
+            {
+                label: "Revenue",
+                // backgroundColor: "rgb(46,202,106)",
+                borderColor: "rgb(46,202,106)",
+                backgroundColor:"rgb(230,243,243)",
+                borderWidth: 2,
+                data: [30, 24, 20, 33, 30, 40, 55],
+                 fill: true,
+               
+            },
+            {
+                label: "Customers",
+                // backgroundColor: "rgb(255,161,113)",
+                borderColor: "rgb(255,119,64)",
+                 backgroundColor:"rgb(242,217,198)",
+                borderWidth: 2,
+                data: [45, 54, 60, 45, 58, 58,68],
+                  fill: true,
+            },
+         
+        ],
         
-
-         Dashboardapi()
-     },[])
-
-
-   
-
-
-
-    const [states, setstates] = useState({
-        options: {
-            chart: {
-                type: "area",
-                stacked: false,
-                height: 350,
-                zoom: {
-                    enabled: false
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            markers: {
-                size: 0,
-            },
-            stroke: {
-                curve: 'smooth'
-            },
-            fill: {
-                type: 'gradient',
-                gradient: {
-                    opacityTo: 0.9,
-                }
-            },
-            legend: {
-                position: 'top',
-                horizontalAlign: 'left'
-            },
-        },
-        stroke: {
-            curve: 'straight'
-        },
-        series: [{
-            name: 'Sales',
-            data: [0, 26, 37, 58, 64, 74, 78, 87],
-            Color: "(rgb(65,84,241)",
-
-        }, {
-            name: 'Revenue',
-            data: [10, 22, 32, 44, 55, 67, 75, 76],
-            color: "rgb(46,202,106)"
-        }, {
-            name: 'customers',
-            data: [8, 14, 20, 30, 45, 50, 58, 64],
-            color: "rgb(255,119,29)"
-        }],
-    });
+    };
 
     const labels = ["January", "February", "March", "April", "May", "June", "july"];
     const data = {
@@ -107,7 +141,6 @@ function Dashboard() {
     };
 
     const labelss = ["January", "February", "March", "April", "May", "June", "july"];
-
     const dataa = {
         labels: labels,
         datasets: [
@@ -117,12 +150,14 @@ function Dashboard() {
                 borderColor: "rgb(75,192,192)",
                 borderWidth: 2,
                 data: [0, 10, 5, 2, 20, 30, 45],
+               
             },
+         
         ],
+        
     };
 
     const labelses = ["blue", "yellow", "pink"];
-
     const dataas = {
         labels: labelses,
         datasets: [
@@ -213,96 +248,90 @@ function Dashboard() {
                 <div className='row'>
                     <div className='col-lg-6 b1 mt-4'>
                         <p className='d-flex a5 mt-2'>Reports|<span className='text-secondary a6'> Today</span><span className='a77 text-secondary'>...</span></p>
-                        <Chart className=" mj"
+                        {/* <Chart className=" "
                             series={states.series}
                             options={states.options}
                             type="line"
                             width={500}
-                        />
+                        /> */}
+                         <Line data={datas}  />
                     </div>
                     <div className='col-lg-6 b2 mt-4'>
                         <p className='d-flex a5 mt-2'>RecentsSales|<span className='text-secondary a6'> Today</span><span className='a77 text-secondary'>...</span></p>
                         <div className='d-flex mt-4'>
-                            <select name="language" id="language" className='b3 text-secondary' >
-                                <option value="javascript">1</option>
-                                <option value="python">2</option>
-                                <option value="c++" >3</option>
-                                <option value="c++" >4</option>
-                                <option value="c++" >5</option>
-                                <option value="c++" >6</option>
-                                <option value="c++" >7</option>
-                                <option value="c++" >8</option>
-                                <option value="c++" >9</option>
-                                <option value="java" selected>10</option>
+                            <select className='b3 text-secondary' >
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="" >3</option>
+                                <option value="" >4</option>
+                                <option value="" >5</option>
+                                <option value="" >6</option>
+                                <option value="" >7</option>
+                                <option value="" >8</option>
+                                <option value="" >9</option>
+                                <option value="" selected>10</option>
                             </select>
                             <p className='b7'>Entries per page</p>
                             <input type="text" className='form-label  b4' placeholder='Search..' />
                         </div>
                         <table className="table">
                             <thead>
-                                <tr>
+                                <tr className='mt-2'>
                                     <th>#</th>
                                     <th>Customer</th>
                                     <th>Product</th>
                                     <th>Price</th>
                                     <th>status</th>
                                 </tr>
+
                             </thead>
-                            <tr>
-                                <td className='text-primary'>#2345</td>
-                                <td>Defalsons</td>
-                                <td className='text-primary'>def@som</td>
-                                <td>$76</td>
-                                <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center '>Approved</td>
-                            </tr>
-                            <tr className="">
-                                <td className='text-primary'>#4567</td>
-                                <td>Doeq</td>
-                                <td className='text-primary'>john@ex</td>
-                                <td>$98</td>
-                                <td style={{ backgroundColor: 'rgb(255,193,7)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Pending</td>
-                            </tr>
-                            <tr>
-                                <td className='text-primary'>#6547</td>
-                                <td>Moew</td>
-                                <td className='text-primary'>mary@</td>
-                                <td>$54</td>
-                                <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Approved</td>
-                            </tr>
-                            <tr>
-                                <td className='text-primary'>#1298</td>
-                                <td>Dooley</td>
-                                <td className='text-primary'>july@</td>
-                                <td>$87</td>
-                                <td style={{ backgroundColor: 'rgb(220,53,69)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Rejected</td>
-                            </tr>
-                            <tr>
-                                <td className='text-primary'>#2365</td>
-                                <td>jacob</td>
-                                <td className='text-primary'>bo@e</td>
-                                <td>$45</td>
-                                <td style={{ backgroundColor: 'rgb(255,193,7)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Pending</td>
-                            </tr>
-                            <tr>
-                                <td className='text-primary'>#3209</td>
-                                <td>Activeson</td>
-                                <td className='text-primary'>act@</td>
-                                <td>$23</td>
-                                <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Approved</td>
-                            </tr>
-                            <tr >
-                                <td className='text-primary'>#1298</td>
-                                <td>Dooley</td>
-                                <td className='text-primary'>july@</td>
-                                <td>$87</td>
-                                <td style={{ backgroundColor: 'rgb(220,53,69)', borderRadius: '60px', fontSize: "13px" }} className='text-white text-center'>Rejected</td>
-                            </tr>
+                            <tbody>
+
+
+                                <tr >
+                                    <td className='text-primary'>#2345</td>
+                                    <td>Defalsons</td>
+                                    <td className='text-primary'>def@som</td>
+                                    <td>$76</td>
+                                    <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '15px', fontSize: "14px", }} className='text-white text-center '>Approved</td>
+                                </tr>
+                                <tr className="">
+                                    <td className='text-primary'>#4567</td>
+                                    <td>Doeq</td>
+                                    <td className='text-primary'>john@ex</td>
+                                    <td>$98</td>
+                                    <td style={{ backgroundColor: 'rgb(255,193,7)', borderRadius: '15px', fontSize: "14px" }} className='text-white text-center'>Pending</td>
+                                </tr>
+                                <tr>
+                                    <td className='text-primary'>#6547</td>
+                                    <td>Moew</td>
+                                    <td className='text-primary'>mary@</td>
+                                    <td>$54</td>
+                                    <td style={{ backgroundColor: 'rgb(25,135,84)', borderRadius: '15px', fontSize: "14px" }} className='text-white text-center'>Approved</td>
+                                </tr>
+                                <tr>
+                                    <td className='text-primary'>#1298</td>
+                                    <td>Dooley</td>
+                                    <td className='text-primary'>july@</td>
+                                    <td>$87</td>
+                                    <td style={{ backgroundColor: 'rgb(220,53,69)', borderRadius: '15px', fontSize: "14px" }} className='text-white text-center'>Rejected</td>
+                                </tr>
+                                <tr>
+                                    <td className='text-primary'>#2365</td>
+                                    <td>jacob</td>
+                                    <td className='text-primary'>bo@e</td>
+                                    <td>$45</td>
+                                    <td style={{ backgroundColor: 'rgb(255,193,7)', borderRadius: '15px', fontSize: "14px" }} className='text-white text-center'>Pending</td>
+                                </tr>
+                               
+
+                            </tbody>
                         </table>
                     </div>
                     <div className='col-lg-6 b8 mt-4 '>
                         <p className='d-flex a5 mt-3'>Line Chart</p>
                         <div>
-                            <Line data={dataa} />
+                            <Line data={dataa}  />
                         </div>
                     </div>
                     <div className='col-lg-6 b8 mt-4 b11'>
@@ -314,7 +343,7 @@ function Dashboard() {
                     <div className='col-lg-6 mt-4 b8'>
                         <p className='d-flex a5 mt-3'>Pie Chart</p>
                         <div className='b12 mt-3'>
-                            <Pie data={dataas}/>
+                            <Pie data={dataas} />
                         </div>
                     </div>
                     <div className='col-lg-6 mt-4 b8 b11'>

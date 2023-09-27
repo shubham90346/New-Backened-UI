@@ -7,6 +7,7 @@ import { LiaAddressCardSolid } from 'react-icons/lia'
 
 import './Comparison.css';
 import './index.css';
+
 import { useEffect, useState } from 'react'
 import Dashboard from './Components/Dashboard'
 import SalesReport from './Components/SalesReport'

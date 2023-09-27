@@ -1,44 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import Spinner from './Spinner';
 
 function SalesReport(props) {
     const [searchText, setSearchText] = useState("");
-    const [SalesData, setSalesData]= useState({});
-    console.log(SalesData.allItems);
-
+    const [SalesData, setSalesData] = useState([]);
+    const [Salesfill, setSalesfill] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const userToken = sessionStorage.getItem('user');
     const option = {
         method: "GET",
         headers: {
-            "Authorization":userToken,
+            "Authorization": userToken,
         },
         body: JSON.stringify()
     }
 
-    const SalesRepData = async ()=>{
-        const response = await fetch(`https://qb.flitsync.com/api/salesorder.php?month=$%7Bmonth%7D&year=$%7Byear%7D&productName=$%7BselectedOption%7D&customerName=$%7BselectedOption1%7D&orderNo=$%7Boderno%7D`,option);
+    const SalesRepData = async () => {
+        setIsLoading(true);
+        const response = await fetch(`https://qb.flitsync.com/api/salesorder.php`, option);
         if (!response.ok) {
             console.log(` Error! Status: ${response.status}`);
-          }
-          const SalesData = await response.json();
-          setSalesData(SalesData)
+        }
+        const SalesData = await response.json();
+        setSalesData(SalesData)
+        setIsLoading(false);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         SalesRepData()
-    },[])
+    }, [])
+
+
+    const SalesFilter = async () => {
+        const response = await fetch(`https://qb.flitsync.com/api/salesorder.php?month=$%7Bmonth%7D&year=$%7Byear%7D&productName=$%7BselectedOption%7D&customerName=$%7BselectedOption1%7D&orderNo=$%7Boderno%7D`, option);
+        if (!response.ok) {
+            console.log(` Error! Status: ${response.status}`);
+        }
+        const Salefilter = await response.json();
+        setSalesfill(Salefilter)
+    }
+
+    useEffect(() => {
+        SalesFilter()
+    }, [])
 
     const handleSearch = (e) => {
         const { value } = e.target;
         setSearchText(value);
-      }
-      
+    }
+
     const submitForm = async (e) => {
         e.preventDefault();
         SalesRepData()
     }
-
 
 
     return (
@@ -48,128 +63,126 @@ function SalesReport(props) {
                 <p className='a3 text-start  '>Home / <span className='a26' >Sales Report</span></p >
                 <div className='mkl'>
                     <p className='oppo'> Filters</p>
-                    <div className='d-flex mt-3'>
+                    <div className='d-flex mt-2'>
                         <select name="language" id="language" className='s8 text-secondary' onChange={handleSearch} >
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected >Select Months
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="" >3</option>
+                            <option value="" >4</option>
+                            <option value="" >5</option>
+                            <option value="" >6</option>
+                            <option value="" >7</option>
+                            <option value="" >8</option>
+                            <option value="" >9</option>
+                            <option value="" >10</option>
+                            <option value="" >11</option>
+                            <option value="" >12</option>
+                            <option value="" selected >Select Months
                             </option>
                         </select>
+
+
+                        <select name="language" id="year" className='s4 text-secondary' onChange={handleSearch} >
+                            <option value="" selected>2023</option>
+                            <option value="" selected>Select Year</option>
+                        </select>
+
+
                         <select name="language" id="language" className='s4 text-secondary' onChange={handleSearch} >
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>Select Year</option>
+                            {
+                                Salesfill.orders?.map((item) => {
+                                    return <option value="">{item.TxnID}
+                                    </option>
+                                })
+                            }
+                            <option value="" selected>By Order No</option>
                         </select>
-                        <select name="language" id="language" className='s4 text-secondary' onChange={handleSearch} >
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>By Order No</option>
+
+
+                        <select name="language" id="language" className='s4 text-secondary' onChange={handleSearch}>
+                            {
+                                Salesfill.orders?.map((item) => {
+                                    const itemdetailss = JSON.parse(item.ItemsDetail)
+                                    return <option>
+                                        {
+                                            itemdetailss.map((item) => {
+                                                return (item.ItemRef.FullName)
+                                            })
+                                        }
+                                    </option>
+                                })
+                            }
+                            <option value="" selected>Select product</option>
                         </select>
-                        <select name="language" id="language" className='s4 text-secondary'  onChange={handleSearch}>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>Select product</option>
+
+
+                        <select name="language" id="language" className='s4 text-secondary' onChange={handleSearch}>
+                            {
+                                Salesfill.orders?.map((item) => {
+                                    return <option value="">{item.CustomerName}
+                                    </option>
+                                })
+                            }
+                            <option value="" selected>Select Customer</option>
                         </select>
-                        <select name="language" id="language" className='s4 text-secondary'  onChange={handleSearch}>
-                            <option value="javascript">1</option>
-                            <option value="python">2</option>
-                            <option value="c++" >3</option>
-                            <option value="java" selected>Select Customer</option>
-                        </select>
-                        <button type="button" className="btn btn- s7 text-white" onClick={submitForm}>Submit</button>
-                        <button type="button" className="btn btn-  s6 text-white">Clear</button>
+
+
+                        <button type='button'  className="btn btn  s7 text-white " onClick={submitForm}>Submit</button>
+                        <button type="button" className="btn btn  s6 text-white">Clear</button>
                     </div>
 
                     <div className='container'>
                         <table className='mt-5 table'>
-                            <tr className='s11 '>
-                                <th >Order No</th>
-                                <th >Customer Name</th>
-                                <th >Product Name</th>
-                                <th >Product Price</th>
-                                <th >Qty</th>
-                                <th >Subtotal price</th>
-                                <th >Tax</th>
-                                <th >Total price</th>
-                            </tr>
-                             
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>Wood Door</td>
-                                <td>-98.00</td>
-                                <td>-10</td>
-                                <td>-1200</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154R-D456746</td>
-                                <td>Marque Wood</td>
-                                <td>Ingredients</td>
-                                <td>-120.00</td>
-                                <td>-13</td>
-                                <td>-1500</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr> 
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Mark johny</td>
-                                <td>Wood Table</td>
-                                <td>-86.00</td>
-                                <td>-45</td>
-                                <td>-1200</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>Markue</td>
-                                <td> Door</td>
-                                <td>-1202.00</td>
-                                <td>-19</td>
-                                <td>-1200</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>johny</td>
-                                <td>ceiling</td>
-                                <td>-56.00</td>
-                                <td>-14</td>
-                                <td>-1200</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>lacob</td>
-                                <td>Wood Door</td>
-                                <td>-102.00</td>
-                                <td>-10</td>
-                                <td>-1200</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr>
-                            <tr className='s12 text-secondary'>
-                                <td >154-D456746</td>
-                                <td>haffman</td>
-                                <td>Lightening</td>
-                                <td>-123.00</td>
-                                <td>-9</td>
-                                <td>-1200</td>
-                                <td>18%</td>
-                                <td>1293</td>
-                            </tr>
+                            <thead>
+                                <tr className='s11'>
+                                    <th >Order No</th>
+                                    <th >Customer Name</th>
+                                    <th >Product Name</th>
+                                    <th >Product Price</th>
+                                    <th  >Qty</th>
+                                    <th >Subtotal price</th>
+                                    <th >Tax</th>
+                                    <th >Total price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {isLoading ? <Spinner/> : SalesRepData }
+                            {
+                                SalesData.orders?.map((item) => {
+                                    const itemdetailss = JSON.parse(item.ItemsDetail)
+
+                                    return <tr key={item.TxnID} className='s12'>
+                                        <td >{item.TxnID} </td>
+                                        <td className='text-secondary'>{item.CustomerName} </td>
+                                        <td className='text-secondary'> {itemdetailss.map((item) => {
+                                            return (item.ItemRef.FullName)
+                                        })}
+                                        </td>
+
+                                        <td className='text-secondary'>
+                                            {itemdetailss.map((item) => {
+                                                return (item.Amount)
+                                            })}
+                                        </td>
+
+                                        <td className='text-secondary'> {itemdetailss.map((item) => {
+                                            return (item.Quantity)
+                                        })}
+                                        </td>
+                                        <td className='text-secondary'>{item.Subtotal}</td>
+                                        <td className='text-secondary'>{item.SalesTaxPercentage}</td>
+                                        <td className='text-secondary'>${item.TotalAmount}</td>
+                                    </tr>
+
+                                })
+                            }
+                            </tbody>
+
+
+                          
+
                         </table>
                     </div>
-
 
                 </div>
                 <br /><br />

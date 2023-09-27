@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import { HiOutlineArrowNarrowLeft } from 'react-icons/hi'
 
 function Comparison(props) {
+    const [Comp, setComp] = useState();
+   
+
+    const userToken = sessionStorage.getItem('user');
+    const option = {
+        method: "GET",
+        headers: {
+            "Authorization": userToken,
+        },
+        body: JSON.stringify()
+    }
+
+    const CompData = async () => {
+        const response = await fetch(`https://qb.flitsync.com/api/salesdata.php?month=$%7Bmonth%7D&year=$%7Byear%7D`, option);
+
+        if (!response.ok) {
+            console.log(` Error! Status: ${response.status}`);
+        }
+        const comRep = await response.json();
+        setComp(comRep)
+    }
+
+    useEffect(() => {
+        CompData();
+    }, [])
+
     return (
         <div className=''>
             <div className='container'>
@@ -16,7 +42,7 @@ function Comparison(props) {
                                 <tr>
                                     <th>Year</th>
                                     <th>
-                                        <select name="language" id="language" className='s4 text-secondary'>
+                                        <select name="language" id="language" className='s44 text-secondary'>
                                             <option value="javascript">1</option>
                                             <option value="python">2</option>
                                             <option value="c++" >3</option>
@@ -25,11 +51,20 @@ function Comparison(props) {
                                     </th>
                                     <th>Month</th>
                                     <th>
-                                        <select name="language" id="language" className='s4 text-secondary'>
-                                            <option value="javascript">1</option>
-                                            <option value="python">2</option>
-                                            <option value="c++" >3</option>
-                                            <option value="java" selected>July  </option>
+                                        <select name="language" id="language" className='s44 text-secondary'>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="" >3</option>
+                                            <option value="" >4</option>
+                                            <option value="" >5</option>
+                                            <option value="" >6</option>
+                                            <option value="" >7</option>
+                                            <option value="" >8</option>
+                                            <option value="" >9</option>
+                                            <option value="" >10</option>
+                                            <option value="" >11</option>
+                                            <option value="" >12</option>
+                                            <option value="java" selected>Month  </option>
                                         </select>
                                     </th>
                                 </tr>
@@ -127,7 +162,7 @@ function Comparison(props) {
                                 <tr>
                                     <th>Year</th>
                                     <th>
-                                        <select name="language" id="language" className='s4 text-secondary'>
+                                        <select name="language" id="language" className='s44 text-secondary'>
                                             <option value="javascript">1</option>
                                             <option value="python">2</option>
                                             <option value="c++" >3</option>
@@ -136,11 +171,20 @@ function Comparison(props) {
                                     </th>
                                     <th>Month</th>
                                     <th>
-                                        <select name="language" id="language" className='s4 text-secondary'>
-                                            <option value="javascript">1</option>
-                                            <option value="python">2</option>
-                                            <option value="c++" >3</option>
-                                            <option value="java" selected>August</option>
+                                        <select name="language" id="language" className='s44 text-secondary'>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="" >3</option>
+                                            <option value="" >4</option>
+                                            <option value="" >5</option>
+                                            <option value="" >6</option>
+                                            <option value="" >7</option>
+                                            <option value="" >8</option>
+                                            <option value="" >9</option>
+                                            <option value="" >10</option>
+                                            <option value="" >11</option>
+                                            <option value="" >12</option>
+                                            <option value="java" selected>Month</option>
                                         </select>
                                     </th>
                                 </tr>
@@ -221,7 +265,7 @@ function Comparison(props) {
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div className=' cc3'></div>
                     <ul className="pagination justify-content-end mt-4">
                         <li className="page-item ">

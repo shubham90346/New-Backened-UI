@@ -49,3 +49,11 @@
 .dsas {
     color: rgb(60, 91, 145);
 }
+.s44 {
+    margin-left: 2%;
+    border: 2px solid rgb(215, 215, 216);
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 5px;
+  
+  }

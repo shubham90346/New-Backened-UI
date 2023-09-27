@@ -1,17 +1,19 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Anton&family=Mooli&family=Prompt:wght@700&family=Quicksand&family=Roboto&display=swap');
- .z2{
-  box-shadow: 0 0  2px rgb(201, 177, 177);
- }
+
+.z2 {
+  box-shadow: 0 0 2px rgb(201, 177, 177);
+}
+
 .zxz {
   margin-left: 2%;
   font-size: 20px;
-  color: rgb(1,41,112);
+  color: rgb(1, 41, 112);
 }
 
 .d1 {
   margin-left: 5%;
-  color: rgb(1,41,112);
+  color: rgb(1, 41, 112);
 }
 
 .sizing1 {
@@ -31,7 +33,7 @@
 
 .d8 {
   font-size: 20px;
- color:  rgb(1,41,112); 
+  color: rgb(1, 41, 112);
 
 }
 
@@ -56,15 +58,24 @@
 }
 
 .t1 {
-  height: 32px;
-  width: 32px;
+  height: 28px;
+  width: 28px;
   color: rgb(201, 177, 177);
+
+}
+
+.cvv1 {
+
+  height: 20px;
+  width: 20px;
+  color: rgb(201, 177, 177);
+
 
 }
 
 .t5 {
   font-weight: 500;
- color:  rgb(56,87,143);
+  color: rgb(56, 87, 143);
 }
 
 .t4 {
@@ -77,8 +88,9 @@
   width: 35%;
   height: 35px;
 }
-.a26{
-  color: rgb(1,41,112);
+
+.a26 {
+  color: rgb(1, 41, 112);
   opacity: 0.7;
 }
 
@@ -91,7 +103,7 @@
   font-family: 'Quicksand', sans-serif;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
-  color: rgb(1,41,112);
+  color: rgb(1, 41, 112);
 }
 
 .a3 {
@@ -305,19 +317,21 @@
 }
 
 .s4 {
-  margin-left: 3%;
+  margin-left: 2%;
   border: 2px solid rgb(215, 215, 216);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   border-radius: 5px;
+  width: 150px;
 }
 
 .s8 {
   border: 2px solid rgb(215, 215, 216);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   border-radius: 5px;
-  margin-left: 2%;
+  margin-left: 1%;
+  width: 150px;
 }
 
 .s6 {
@@ -325,9 +339,17 @@
   background-color: black;
 }
 
+.s6:hover {
+  background-color: black;
+}
+
 .s7 {
   background-color: rgb(13, 110, 253);
   margin-left: 3%;
+}
+
+.s7:hover {
+  background-color: rgb(13, 110, 253);
 }
 
 .mkl {
@@ -338,10 +360,10 @@
 }
 
 .oppo {
-  color: rgb(9,60,159);
+  color: rgb(9, 60, 159);
   font-size: 17px;
   font-weight: 600;
-  margin-left: 2%;
+  margin-left: 1.5%;
   margin-top: 3%;
 }
 
@@ -352,12 +374,20 @@ table {
 
 .s11 {
   background-color: white;
-  font-size: 19px;
+  font-size: 16px;
+}
+.s64 {
+  background-color: white;
+  font-size: 15px;
 }
 
 .s12 {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 550;
+}
+.s121 {
+  font-size: 14px;
+  font-weight: 550;
 }
 
 .hr_line {
@@ -409,6 +439,10 @@ table {
   font-size: 15px;
 }
 
+.lg6:hover {
+  background-color: rgb(13, 110, 253);
+}
+
 .lg7 {
   font-size: 16px;
   font-weight: 400;
@@ -448,18 +482,23 @@ table {
   background-color: rgb(211, 200, 200);
   margin-left: -5px;
 }
-.trtt{
-  color: rgb(65,84,241);
-}
-.logo1{
-  text-decoration: none;
 
+.trtt {
+  color: rgb(65, 84, 241);
 }
-.logo2{
+
+.logo1 {
+  text-decoration: none;
+  background-color: white;
+  color: rgb(65, 84, 241);
+}
+
+.logo2 {
   color: blueviolet;
   background-color: none !important;
 }
-.l33{
+
+.l33 {
   width: 58%;
   height: 470px;
   position: absolute;
@@ -469,6 +508,7 @@ table {
   border-radius: 10px;
 
 }
+
 .l4 {
   text-align: start;
 }
@@ -482,6 +522,7 @@ table {
   color: black;
   font-weight: 600;
 }
+
 .log22 {
   font-size: 15px;
   font-weight: 600;
@@ -491,6 +532,25 @@ table {
 .log33 {
   font-size: 13px;
 }
+
 .l5 {
   background-color: rgb(33, 37, 41);
 }
+
+.l5:hover {
+  background-color: rgb(33, 37, 41);
+}
+
+#spin-1 {
+height: 70px;
+  width: 70px;
+  margin-left: 450%;
+  margin-top: 100%;
+}
+#spin-2 {
+  height: 70px;
+    width: 70px;
+    margin-left: 300%;
+    margin-top: 100%;
+  }
+
